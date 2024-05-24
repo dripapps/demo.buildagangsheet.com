@@ -52,12 +52,18 @@
                             width: 22, // required
                             height: 22, // required
                             unit: 'in', // optional, default: "in"
-                            title: "22 in X 22 in" // optional, default: "{width}{unit} x {height}{unit}"
+                            title: "22 in X 22 in", // optional, default: "{width}{unit} x {height}{unit}"
+                            metadata: { // optional
+                                'meta_id': 1
+                            }
                         },
                         {
                             id: 2,
                             width: 22,
-                            height: 60
+                            height: 60,
+                            metadata: {
+                                'meta_id': 2
+                            }
                         },
                         {
                             id: 3,
