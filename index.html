@@ -1,94 +1,198 @@
 <html>
-    <head>
-        <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:300,400,600,700&amp;lang=en" />
-        <script src="https://dev.buildagangsheet.com/assets/v1/scripts/gs-builder.min.js"></script>
-    </head> 
+  <head>
+    <link
+      rel="stylesheet"
+      href="//fonts.googleapis.com/css?family=Montserrat:300,400,600,700&amp;lang=en"
+    />
+    <script src="https://dev.buildagangsheet.com/assets/v1/scripts/gs-builder.min.js"></script>
+  </head>
 
-    <style>
-        body {
-            width: 100%; 
-            height: 100%;
-            margin: 0; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center;
-            flex-direction: column;
-        }
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .general {
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 10px;
+      overflow: auto;
+    }
 
-        input {
-            width: 300px;
-            padding: 10px;
-            margin-top: 4px;
-        }
+    button {
+      width: 300px;
+      padding: 10px;
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 5px;
+    }
+    .image-tab {
+      border: 1px solid grey;
+      width: 100%;
+      height: calc(100vh - 100px);
+      padding: 10px;
+      overflow: auto;
+      /* display: flex;
+      justify-content: space-between; */
+      display: grid;
+      gap: 50px 100px;
+      grid-template-columns: auto auto auto auto auto;
+      margin-bottom: 20px;
+      display: none;
+    }
 
-        button {
-            width: 300px;
-            padding: 10px; 
-            font-size: 18px;
-            font-weight: bold;
-            margin-top: 5px;
-        }
-    </style>
-    <body class="general"> 
-        <button class="createGangSheetBtn" onclick="createGangSheet()">Create a Gang Sheet</button>
-        
-        <label style="width: 300px; margin-top: 20px">Design ID</label>
-        <input class="input" placeholder="Design ID" id="designId" value="">
-        <button class="editGangSheetBtn" onclick="editGangSheet()">Edit a Gang Sheet</button>
-        
-        <div id="gs-builder">
-            <span class="loading"></span>
-        </div>
+    .thumbnail-item {
+      height: 250px;
+      border-radius: 5px;
+      box-shadow: 0 0 5px grey;
+    }
 
-        <script> 
-            function createGangSheet() {
-                gs_builder.open({
-                    container: 'gs-builder', // optional - id of the element for the modal to be rendered in.
-                    mode: 'development',
-                    size_id: 2, // optional, default: the first size.
-                    sizes: [
-                        {
-                            id: 1, // Required
-                            width: 22, // required
-                            height: 22, // required
-                            unit: 'in', // optional, default: "in"
-                            title: "22 in X 22 in" // optional, default: "{width}{unit} x {height}{unit}"
-                        },
-                        {
-                            id: 2,
-                            width: 22,
-                            height: 60
-                        },
-                        {
-                            id: 3,
-                            width: 22,
-                            height: 120
-                        }
-                    ]
-                }).on('design:created', (e) => {
-                    console.log(e)
-                    gs_builder.close()
-                })
-            }
+    .thumbnail-item .image-panel {
+      border-bottom: 1px solid rgba(182, 182, 182, 0.514);
+      height: 200px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
 
-            function editGangSheet() {
-                gs_builder.open({
-                    mode: 'development',
-                    design_id: document.getElementById('designId').value
-                }).on({
-                    'design:updated': (e) => {
-                        console.log(e)
-                        gs_builder.close()
-                    }
-                }) 
-            }
-        </script>
-    </body> 
+    .thumbnail-item img {
+      background-image: url(./img_bg.png);
+      background-repeat: repeat;
+      object-fit: contain;
+    }
+    .info-panel {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 50px;
+      padding: 0 10px;
+    }
+    .info-panel .title {
+      font-size: 14px;
+      margin: 0;
+    }
+    .info-panel .btn-edit {
+      width: 80px;
+      height: 30px;
+      padding: 10px;
+      font-weight: bold;
+      border-radius: 40px;
+      border-width: 1px;
+      border-style: solid;
+      text-align: center;
+      font-size: 16px;
+      text-decoration: none;
+      font-weight: 500;
+      line-height: 0.8;
+      color: #fff;
+      background-color: #c45003;
+      border-color: #c45003;
+      cursor: pointer;
+    }
+
+    .info-panel .btn-edit:hover {
+      transform: scale(1.05);
+      background-color: #b14904;
+      border-color: #b14904;
+    }
+  </style>
+  <body>
+    <div class="general">
+      <div class="image-tab"></div>
+      <button class="createGangSheetBtn" onclick="createGangSheet()">
+        Create a Gang Sheet
+      </button>
+
+      <div id="gs-builder">
+        <span class="loading"></span>
+      </div>
+    </div>
+
+    <script>
+      function createGangSheet() {
+        gs_builder
+          .open({
+            container: "gs-builder", // optional - id of the element for the modal to be rendered in.
+            mode: "development",
+            size_id: 2, // optional, default: the first size.
+            sizes: [
+              {
+                id: 1, // Required
+                width: 22, // required
+                height: 22, // required
+                unit: "in", // optional, default: "in"
+                title: "22 in X 22 in", // optional, default: "{width}{unit} x {height}{unit}"
+              },
+              {
+                id: 2,
+                width: 22,
+                height: 60,
+              },
+              {
+                id: 3,
+                width: 22,
+                height: 120,
+              },
+            ],
+          })
+          .on("design:created", (res) => {
+            gs_builder.close();
+            const imagePanelTab = document.querySelector(".image-tab");
+            imagePanelTab.style.display = 'grid'
+            let thumbnailTabs = "";
+            res.data.designs.map((item, index) => {
+                let imageStyle = "";
+                if (item.size.height > item.size.width) {
+                imageStyle = `height: 100%; width: ${
+                    200 * (item.size.width / item.size.height)
+                }px`;
+                } else {
+                imageStyle = `width: 100%; height: ${
+                    200 * (item.size.width / item.size.height)
+                }px`;
+                }
+                thumbnailTabs += `<div class="thumbnail-item">
+                    <div class="image-panel">
+                        <img src="${item.thumbnail_url}" style="${imageStyle}" alt="thumbnail-${index}"/>
+                    </div>
+                    <div class="info-panel">
+                        <p class="title">${item.size.title}</p>
+                        <button class="btn-edit" data-id="${item.id}" onClick="editGangSheet(this)">Edit</button>
+                    </div>
+                </div>`;
+            });
+            imagePanelTab.innerHTML += thumbnailTabs;
+          });
+      }
+
+      function editGangSheet(e) {
+        const id = e.getAttribute('data-id');
+        gs_builder
+          .open({
+            mode: "development",
+            design_id: id,
+          })
+          .on({
+            "design:updated": (e) => {
+              console.log(e);
+              gs_builder.close();
+            },
+          });
+      }
+    </script>
+  </body>
 </html>
 
 <style>
-
-#gs-builder {
+  #gs-builder {
     position: fixed;
     left: 0;
     top: 0;
@@ -96,16 +200,16 @@
     height: 100vh;
     background-color: white;
     display: none;
-}
+  }
 
-/* General */
-.general{
+  /* General */
+  .general {
     font-family: "Montserrat", sans-serif;
     color: #767674;
-}
+  }
 
-/* Create a Gang Sheet Button*/
-.createGangSheetBtn {
+  /* Create a Gang Sheet Button*/
+  .createGangSheetBtn {
     border-radius: 40px;
     border-width: 1px;
     border-style: solid;
@@ -116,24 +220,24 @@
     text-decoration: none;
     font-weight: 500;
     line-height: 1.5;
-    transition: all .2s cubic-bezier(.4, 0, 1, 1);
+    transition: all 0.2s cubic-bezier(0.4, 0, 1, 1);
     transition-property: color, border-color, background-color;
     color: #fff;
     background-color: #c45003;
     border-color: #c45003;
-}
+  }
 
-.createGangSheetBtn:focus,
-.createGangSheetBtn:hover {
+  .createGangSheetBtn:focus,
+  .createGangSheetBtn:hover {
     background-color: #8d3a02;
     border-color: #8d3a02;
     color: #fff;
     text-decoration: none;
     cursor: pointer;
-}
+  }
 
-/* edit gang sheet button */
-.editGangSheetBtn{
+  /* edit gang sheet button */
+  .editGangSheetBtn {
     border-radius: 40px;
     border-width: 1px;
     border-style: solid;
@@ -144,50 +248,26 @@
     text-decoration: none;
     font-weight: 500;
     line-height: 1.5;
-    transition: all .2s cubic-bezier(.4,0,1,1);
+    transition: all 0.2s cubic-bezier(0.4, 0, 1, 1);
     transition-property: color, border-color, background-color;
     color: #767674;
     background-color: #fff;
     border-color: #aeaead;
-}
+  }
 
-.editGangSheetBtn:focus,
-.editGangSheetBtn:hover{
+  .editGangSheetBtn:focus,
+  .editGangSheetBtn:hover {
     color: #555553;
     background-color: #f5f5f5;
     border-color: #aeaead;
     text-decoration: none;
     cursor: pointer;
-}
+  }
 
-/* input */
-.input{
-    box-sizing: border-box;
-    padding: 10px 20px;
-    background: #fff;
-    border: 1px solid #aeaead;
-    box-shadow: 0 31px 80px rgba(204, 204, 204, .07), 0 6.2px 13px rgba(204, 204, 204, .035);
-    border-radius: 22px;
-    flex-grow: 0;
-    appearance: none;
-    font-size: 16px;
-    color: #767674;
-    height: auto;
-    line-height: 1.5em;
-    transition: .2s all cubic-bezier(.4,0,1,1);
-}
-
-.input:focus,
-.input:hover{
-    border: 1px solid #ffb061;
-    cursor: pointer;
-}
-
-
-/* loading 
+  /* loading 
 we don't use a gif but have it in CSS. If possible could we change the color of your loading gif to match ours #c45003 CSS is also below if that's easier.
 */
-.loading {
+  .loading {
     position: absolute;
     left: calc(50% - 40px);
     top: calc(50% - 40px);
