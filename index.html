@@ -66,7 +66,19 @@
     .thumbnail-item img {
       background-repeat: repeat;
       object-fit: contain;
+
+      background-size: var(--cell-size, 15px) var(--cell-size, 15px);
+      background-image: conic-gradient(
+        white 0deg,
+        white 90deg,
+        #cccccc 90deg,
+        #cccccc 180deg,
+        white 180deg,
+        white 270deg,
+        #cccccc 270deg
+      );
     }
+
     .info-panel {
       display: flex;
       justify-content: space-between;
@@ -145,20 +157,20 @@
           .on("design:created", (res) => {
             gs_builder.close();
             const imagePanelTab = document.querySelector(".image-tab");
-            imagePanelTab.style.display = 'grid'
+            imagePanelTab.style.display = "grid";
             let thumbnailTabs = "";
             res.data.designs.map((item, index) => {
-                let imageStyle = "";
-                if (item.size.height > item.size.width) {
+              let imageStyle = "";
+              if (item.size.height > item.size.width) {
                 imageStyle = `height: 100%; width: ${
-                    200 * (item.size.width / item.size.height)
+                  200 * (item.size.width / item.size.height)
                 }px`;
-                } else {
+              } else {
                 imageStyle = `width: 100%; height: ${
-                    200 * (item.size.width / item.size.height)
+                  200 * (item.size.width / item.size.height)
                 }px`;
-                }
-                thumbnailTabs += `<div class="thumbnail-item">
+              }
+              thumbnailTabs += `<div class="thumbnail-item">
                     <div class="image-panel">
                         <img src="${item.thumbnail_url}" style="${imageStyle}" alt="thumbnail-${index}"/>
                     </div>
@@ -173,7 +185,7 @@
       }
 
       function editGangSheet(e) {
-        const id = e.getAttribute('data-id');
+        const id = e.getAttribute("data-id");
         gs_builder
           .open({
             mode: "development",
