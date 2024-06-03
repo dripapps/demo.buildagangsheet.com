@@ -34,6 +34,15 @@
       font-weight: bold;
       margin-top: 5px;
     }
+
+    input {
+        width: 300px;
+        padding: 10px;
+        margin-top: 4px;
+        border-radius: 100px;
+        border: solid 1px #7a7a78;
+    }
+
     .image-tab {
       border: 1px solid grey;
       width: 100%;
@@ -121,6 +130,10 @@
       <button class="createGangSheetBtn" onclick="createGangSheet()">
         Create a Gang Sheet
       </button>
+
+      <label style="width: 300px; margin-top: 20px">Design ID</label>
+      <input class="input" placeholder="Design ID" id="designId" value="">
+      <button class="editGangSheetBtn" onclick="editGangSheet()">Edit a Gang Sheet</button>
 
       <div id="gs-builder">
         <span class="loading"></span>
