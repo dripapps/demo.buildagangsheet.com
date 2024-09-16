@@ -4,7 +4,7 @@
       rel="stylesheet"
       href="//fonts.googleapis.com/css?family=Montserrat:300,400,600,700&amp;lang=en"
     />
-    <script src="https://dev.buildagangsheet.com/assets/v1/scripts/gs-builder.min.js"></script>
+    <script type="module" src="https://dev.buildagangsheet.com/assets/v1/scripts/gs-builder.min.js"></script>
   </head>
 
   <style>
@@ -188,7 +188,10 @@
           .on("design:created", (res) => {
             gs_builder.close();
             console.log(res)
-          });
+          })
+          .on('closed', (res) => {
+            console.log(res)
+          })
       }
 
       function editGangSheet(e) {
