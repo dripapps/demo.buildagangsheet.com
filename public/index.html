@@ -4,7 +4,7 @@
       rel="stylesheet"
       href="//fonts.googleapis.com/css?family=Montserrat:300,400,600,700&amp;lang=en"
     />
-    <script src="https://dev.buildagangsheet.com/assets/v1/scripts/gs-builder.min.js"></script>
+    <script src="https://app.buildagangsheet.com/assets/v1/scripts/gs-builder.min.js"></script>
   </head>
 
   <style>
@@ -143,8 +143,9 @@
         gs_builder
           .open({
             container: "gs-builder", // optional - id of the element for the modal to be rendered in.
-            mode: "development",
-            shop_id: '4f21c0f7-940b-4753-b5d4-8772449df254',
+            mode: "production",
+            // shop_id: '4f21c0f7-940b-4753-b5d4-8772449df254',
+            shop_id: '95070776-c392-40bc-b75c-70b4ef5b6837',
             size_id: 2, // optional, default: the first size.
             sizes: [
               {
@@ -197,7 +198,7 @@
       function editGangSheet(e) {
         gs_builder
           .open({
-            mode: "development",
+            mode: "production",
             design_id: document.getElementById('designId').value,
           })
           .on({
