@@ -79,7 +79,7 @@ function editGangSheet() {
 }
 ```
 
-#### 3. Generate Gang Sheet Image
+#### 4. Generate Gang Sheet Image
 
 In order to generate the Gang Sheet image, you need to make a POST request to the following endpoint.
 You can create the Api token from your store dashboard.
@@ -94,5 +94,16 @@ Authorization: Bearer [API_TOKEN]
     "design_id" : [DESIGN_ID],
     "file_name": "gang_sheet.png" // optional
 }
+```
+ 
+#### 5. Get Design Details
+
+In order to get the details of a Gang Sheet, you need to make a GET request to the following endpoint.
+
+```http
+GET /api/v1/design/[DESIGN_ID] HTTP/1.1
+Host: app.buildagangsheet.com
+Authorization: Bearer [API_TOKEN]
+Content-Type: application/json
 ```
  
