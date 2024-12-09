@@ -50,7 +50,15 @@ You can get the Shop ID from your store dashboard.
                 width: 22,
                 height: 120
             }
-        ]
+        ],
+        customer: { // optional, default: null
+            id: 101, // required
+            name: 'John Doe', // required
+            email: 'test@email.com' // required
+        },
+        settings: { // optional
+            showStartModal: false, // optional, default: true
+        }
     }).on('design:created', (e) => {
         console.log(e)
         gs_builder.close()
