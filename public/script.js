@@ -5,6 +5,11 @@ function createGangSheet() {
         mode: "development",
         shop_id: '4f21c0f7-940b-4753-b5d4-8772449df254',
         size_id: 2, // optional, default: the first size.
+        customer: {
+          id: 1,
+          email: 'test@email.com',
+          name: "Jhon Doe"
+        },
         sizes: [
           {
             id: 1, // Required
