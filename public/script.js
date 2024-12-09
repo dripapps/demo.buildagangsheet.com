@@ -5,10 +5,10 @@ function createGangSheet() {
         mode: "development",
         shop_id: '4f21c0f7-940b-4753-b5d4-8772449df254',
         size_id: 2, // optional, default: the first size.
-        customer: {
-          id: 1,
-          email: 'test@email.com',
-          name: "Jhon Doe"
+        customer: { // optional, default is null.
+          id: 1,  // required
+          email: 'test@email.com', // required
+          name: "Jhon Doe" // required
         },
         sizes: [
           {
@@ -48,6 +48,9 @@ function createGangSheet() {
             visible: 'Hidden'
           },
         ],
+        settings: {
+          showStartModal: false
+        }
       })
       .on("design:created", (res) => {
         gs_builder.close();
