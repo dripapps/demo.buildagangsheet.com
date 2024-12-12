@@ -45,7 +45,7 @@ function createGangSheet() {
         ],
         settings: {
           nameAndNumber: {
-            enable: true
+            enabled: true
           }
         }
       })
