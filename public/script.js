@@ -43,6 +43,11 @@ function createGangSheet() {
             visible: 'Hidden'
           },
         ],
+        settings: {
+          nameAndNumber: {
+            enable: true
+          }
+        }
       })
       .on("design:created", (res) => {
         gs_builder.close();
