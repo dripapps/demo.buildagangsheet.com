@@ -58,6 +58,23 @@ You can get the Shop ID from your store dashboard.
         },
         settings: { // optional
             showStartModal: false, // optional, default: true
+            nameAndNumber: { // optional
+                enable: true, // optional, default: false
+
+                // other name and number settings
+                default: false, // optional, default: false, if true opens name and number tool as default
+                unit: 'in', // optional, default: 'in', possible values: 'in', 'cm', 'mm' 
+                size: { // opaional
+                    name: {
+                        sm: 1,
+                        lg: 2,
+                    },
+                    number: {
+                        sm: 4,
+                        lg: 8,
+                    }
+                },
+            }
         }
     }).on('design:created', (e) => {
         console.log(e)
