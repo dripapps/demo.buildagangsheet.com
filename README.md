@@ -59,7 +59,7 @@ You can get the Shop ID from your store dashboard.
         settings: { // optional
             showStartModal: false, // optional, default: true
             nameAndNumber: { // optional
-                enable: true, // optional, default: false
+                enabled: true, // optional, default: false
 
                 // other name and number settings
                 default: false, // optional, default: false, if true opens name and number tool as default
