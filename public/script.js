@@ -43,6 +43,9 @@ function createGangSheet() {
             visible: 'Hidden'
           },
         ],
+        customer: {
+          id: 101,
+        },
         settings: {
           nameAndNumber: {
             enabled: true
