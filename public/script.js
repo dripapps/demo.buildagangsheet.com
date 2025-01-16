@@ -5,6 +5,7 @@ function createGangSheet() {
         mode: "development",
         shop_id: '4f21c0f7-940b-4753-b5d4-8772449df254',
         size_id: 2, // optional, default: the first size.
+        quantity: Number(document.getElementById('quantity').value) || 1,
         customer: { // optional, default is null.
           id: 1,  // required
           email: 'test@email.com', // required
