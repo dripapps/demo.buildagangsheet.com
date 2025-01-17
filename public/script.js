@@ -5,6 +5,7 @@ function createGangSheet() {
         mode: "production", 
         shop_id: '95070776-c392-40bc-b75c-70b4ef5b6837',
         size_id: 2, // optional, default: the first size.
+        quantity: Number(document.getElementById('quantity').value) || 1,
         sizes: [
           {
             id: 1, // Required
