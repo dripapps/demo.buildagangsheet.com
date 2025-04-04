@@ -49,7 +49,9 @@ function createGangSheet() {
         settings: {
           nameAndNumber: {
             enabled: true
-          }
+          },
+          enableAddNewDesign: false,
+          enableQuantity: false,
         }
       })
       .on("design:created", (res) => {

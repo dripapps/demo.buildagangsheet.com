@@ -74,7 +74,9 @@ You can get the Shop ID from your store dashboard.
                         lg: 8,
                     }
                 },
-            }
+            },
+            enableAddNewDesign: false, // optional, default: true
+            enableQuantity: false, // optional, default: true
         }
     }).on('design:created', (e) => {
         console.log(e)
